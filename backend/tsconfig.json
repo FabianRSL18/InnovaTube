@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "target": "ES2019",                  /* Versión de JS a generar */
+    "module": "commonjs",                /* Módulos tipo Node */
+    "rootDir": "./src",                  /* Carpeta donde estará el código fuente */
+    "outDir": "./dist",                  /* Carpeta donde saldrá el código compilado */
+    "esModuleInterop": true,             /* Facilita imports de librerías comunes */
+    "strict": true,                      /* Reglas estrictas de TypeScript */
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true
+  }
+}
