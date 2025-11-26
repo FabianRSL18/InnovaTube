@@ -1,0 +1,19 @@
+# Dependencias locales
+node_modules/
+
+# Carpetas de build
+dist/
+build/
+
+# Variables de entorno
+.env
+.env.local
+.env.*.local
+
+# Archivos generados por el sistema
+.DS_Store
+Thumbs.db
+
+# IDE / editor
+.vscode/
+.idea/
