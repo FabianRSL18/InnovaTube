@@ -3,7 +3,7 @@
 Ejercicio Técnico
 
 ## Estado del proyecto 
-Servidor Express inicial configurado y en funcionamiento
+Servidor Express inicial configurado y conexión a MongoDB exitosa.
 
 ## Estructura base
 innovatube/
@@ -26,7 +26,7 @@ Luego comprobar en navegador o Postman:
     http://localhost:3000/api/health
 
 ## Próximos pasos
-- Configurar conexión a base de datos en backend.
-- Crear modelos y API de autenticación (registro/login).
+- Crear modelo de usuario (User) y API de autenticación (registro/login).
 - Configurar Angular en frontend.
+- Implementar sistema de favoritos de videos.
 - Integrar YouTube Data API.
