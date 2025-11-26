@@ -9,7 +9,7 @@ const router = Router();
 //Endpoint: POST /api/auth/register
 router.post('/register',registrarUsuario);
 
-//Ruta para iniciar sesion (falta)
+//Ruta para iniciar sesion
 //Endpoint: POST /api/auth/login
 router.post('/login', iniciarSesion);
 

@@ -65,7 +65,53 @@ export const registrarUsuario = async (req: Request, res: Response) =>{
     }
 };
 
-// Controlador para iniciar sesión (lo implementaremos después)
-export const iniciarSesion = async (_req: Request, res: Response) => {
-    return res.status(501).json({ mensaje: 'Endpoint de inicio de sesión aún no implementado' });
+//Inicio de sesion (Login)-------------------------------------------------------------------------
+export const iniciarSesion = async (req: Request, res: Response) => {
+    try{
+        const {identificador, contrasena} = req.body;
+        //identificador = nombreUsuario o correo
+
+        if(!identificador || !contrasena){
+            return res.status(400).json({mensaje: 'Identificar y contraseña son obligatorios'});
+        }
+
+        //Buscar nombreUsuario o correo
+        const usuario = await Usuario.findOne({
+            $or: [
+                {nombreUsuario: identificador},
+                {correo: identificador}
+            ]
+        });
+
+        if (!usuario){
+            return res.status(401).json({mensaje: 'credenciales incorrectas'});
+        }
+
+        //Generar token JWT
+        const token = jwt.sign(
+            {
+                uid: usuario._id,
+                nombreUsuario: usuario.nombreUsuario,
+                correo: usuario.correo
+            },
+            JWT_SECRET,
+            {expiresIn: '2h'} //Tiempo de expiracion
+        );
+
+        //Responder usuario+token
+        return res.status(200).json({
+            mensaje: 'Inicio de Sesion exitoso',
+            token,
+            usuario: {
+                id: usuario._id,
+                nombre: usuario.nombre,
+                apellido: usuario.apellido,
+                nombreUsuario: usuario.nombreUsuario,
+                correo: usuario.correo
+            }
+        });
+    }catch (error){
+        console.error('Error en iniciarSesion:', error);
+        return res.status(500).json({ mensaje: 'Error interno del servidor' });
+    }
 };
