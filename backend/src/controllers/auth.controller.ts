@@ -72,7 +72,7 @@ export const iniciarSesion = async (req: Request, res: Response) => {
         //identificador = nombreUsuario o correo
 
         if(!identificador || !contrasena){
-            return res.status(400).json({mensaje: 'Identificar y contraseña son obligatorios'});
+            return res.status(400).json({mensaje: 'Identificador y contraseña son obligatorios'});
         }
 
         //Buscar nombreUsuario o correo
