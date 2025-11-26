@@ -4,6 +4,8 @@ import 'dotenv/config';
 import express from 'express';
 import cors from 'cors';
 import { connectDB } from './config/db'; // Función para realizar conexión a la bd
+import authRoutes from './routes/auth.routes';
+
 
 const app = express();
 
@@ -11,9 +13,11 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+//Rutas de autenticación
+app.use('/api/auth/', authRoutes);
+
 // Ruta de prueba para verificar que el servidor funciona
 app.get('/api/health', (_req, res) => {
-    // Respuesta simple para comprobar que la API está viva
     res.json({ status: 'ok', message: 'API Innovatube funcionando' });
 });
 
