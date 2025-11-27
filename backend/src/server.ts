@@ -5,6 +5,7 @@ import express from 'express';
 import cors from 'cors';
 import { connectDB } from './config/db'; // Función para realizar conexión a la bd
 import authRoutes from './routes/auth.routes';
+import favoritosRoutes from './routes/favoritos.routes';
 
 
 const app = express();
@@ -15,6 +16,7 @@ app.use(express.json());
 
 //Rutas de autenticación
 app.use('/api/auth/', authRoutes);
+app.use('/api/favoritos', favoritosRoutes);
 
 // Ruta de prueba para verificar que el servidor funciona
 app.get('/api/health', (_req, res) => {

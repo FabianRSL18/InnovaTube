@@ -20,6 +20,7 @@ innovatube/
 - Inicio de sesión con validación de credenciales
 - Generación de token JWT
 - Ruta protegida para obtener perfil de usuario 
+- API para administrar videos favoritos (crear, listar, eliminar)  
 
 ### Como ejecutar (hasta ahora)
 
@@ -33,6 +34,13 @@ Desde la carpeta /backend:
 - | POST | /api/auth/registro | Registro de nuevos usuarios |
 - | POST | /api/auth/login    | Iniciar sesión y obtener token |
 - | GET  | /api/auth/me       | Obtener perfil del usuario (requiere token) |
+
+## Gestión de videos favoritos (Protegidos con JWT)
+
+- | POST   | /api/favoritos | Agregar un video a favoritos |
+- | GET    | /api/favoritos | Listar favoritos del usuario |
+- | GET    | /api/favoritos?q=texto | Buscar favoritos por título o canal |
+- | DELETE | /api/favoritos/:videoId | Eliminar un favorito por ID de video |
 
 ## Variables necesarias en '.env'
 - PORT=3000
@@ -53,8 +61,21 @@ Desde la carpeta /backend:
     En Headers agregar:
     Authorization: Bearer <tu_token_aquí>
 
+## Ejemplo para agregar video a favoritos
+
+POST /api/favoritos
+
+{
+  "videoId": "dQw4w9WgXcQ",
+  "titulo": "Video de prueba",
+  "descripcion": "Ejemplo desde Postman",
+  "canal": "Canal Demo",
+  "miniaturaUrl": "https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg"
+}
+
 ## Próximos pasos
-- Crear colección y modelo para videos favoritos.
-- implementar API para guardar/eliminar favoritos.
-- Conectar frontend Angular para registro y login.
-- Integrar YouTube Data API.
+- Inicializar frontend en Angular.
+- Crear componentes para registro e inicio de sesión.
+- Consumir API desde Angular con servicio HTTP.
+- Mostrar y gestionar favoritos desde el frontend.
+- Integrar YouTube Data API para búsqueda y visualización de videos.
